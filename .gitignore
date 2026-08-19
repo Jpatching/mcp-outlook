@@ -18,3 +18,9 @@ token_cache.bin
 Thumbs.db
 .vscode/
 .idea/
+
+# Build & Test Artifacts
+dist/
+build/
+*.egg-info/
+.pytest_cache/
