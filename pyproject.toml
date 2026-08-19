@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "mcp-outlook"
+name = "mcp-outlook-desktop"
 version = "0.1.0"
 description = "Microsoft 365 Outlook Mail and Calendar Model Context Protocol (MCP) server for Claude and AI assistants with local Windows MAPI bridge"
 readme = "README.md"

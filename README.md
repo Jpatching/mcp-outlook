@@ -1,5 +1,6 @@
 # Microsoft Outlook MCP Server for Claude & Antigravity (AGY)
 
+[![PyPI](https://img.shields.io/pypi/v/mcp-outlook-desktop.svg)](https://pypi.org/project/mcp-outlook-desktop/)
 [![CI](https://github.com/Jpatching/mcp-outlook/actions/workflows/ci.yml/badge.svg)](https://github.com/Jpatching/mcp-outlook/actions)
 
 A high-performance **Model Context Protocol (MCP)** server providing direct, secure access to your **Microsoft 365 Outlook** emails, calendar, and contacts from:
@@ -25,7 +26,7 @@ A high-performance **Model Context Protocol (MCP)** server providing direct, sec
 If you have `uv` installed, you can run the server directly:
 
 ```cmd
-uvx mcp-outlook
+uvx mcp-outlook-desktop
 ```
 
 #### Claude Desktop Configuration (`%APPDATA%\Claude\claude_desktop_config.json`):
@@ -42,7 +43,7 @@ uvx mcp-outlook
 
 #### Claude Code CLI:
 ```cmd
-claude mcp add outlook uvx mcp-outlook
+claude mcp add outlook uvx mcp-outlook-desktop
 ```
 
 ---
@@ -50,7 +51,7 @@ claude mcp add outlook uvx mcp-outlook
 ### Method 2: Local Installation with `pip`
 
 ```cmd
-pip install mcp-outlook
+pip install mcp-outlook-desktop
 ```
 
 Then in your Claude Desktop config:
