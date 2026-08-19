@@ -1,6 +1,8 @@
 # Microsoft Outlook MCP Server for Claude & Antigravity (AGY)
 
-A private, high-performance **Model Context Protocol (MCP)** server providing direct, secure access to your **Work Microsoft 365 Outlook** emails, calendar, and contacts from:
+[![CI](https://github.com/Jpatching/mcp-outlook/actions/workflows/ci.yml/badge.svg)](https://github.com/Jpatching/mcp-outlook/actions)
+
+A high-performance **Model Context Protocol (MCP)** server providing direct, secure access to your **Microsoft 365 Outlook** emails, calendar, and contacts from:
 - **Claude Code CLI**
 - **Claude Desktop**
 - **Antigravity CLI (AGY)**
