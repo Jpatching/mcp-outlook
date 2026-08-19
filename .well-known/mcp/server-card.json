@@ -1,0 +1,43 @@
+{
+  "name": "patchingjoshua/mcp-outlook",
+  "version": "0.1.0",
+  "description": "Microsoft 365 Outlook Mail and Calendar MCP server for Claude and AI assistants via local Windows MAPI",
+  "tools": [
+    {
+      "name": "outlook_check_status",
+      "description": "Check Microsoft 365 Outlook authentication and connection status"
+    },
+    {
+      "name": "outlook_list_messages",
+      "description": "List recent emails from an Outlook mail folder"
+    },
+    {
+      "name": "outlook_search_messages",
+      "description": "Search emails across the mailbox using query terms"
+    },
+    {
+      "name": "outlook_get_message",
+      "description": "Get full details and content of a specific email message by its ID safely encapsulated"
+    },
+    {
+      "name": "outlook_create_draft",
+      "description": "Create an email draft in Outlook Drafts folder"
+    },
+    {
+      "name": "outlook_send_mail",
+      "description": "Send an email through Outlook (diverts to Drafts unless confirm_send=True)"
+    },
+    {
+      "name": "outlook_list_calendar_events",
+      "description": "List upcoming calendar events and meetings from Outlook"
+    },
+    {
+      "name": "outlook_create_calendar_event",
+      "description": "Create and schedule a meeting or event in Outlook Calendar"
+    },
+    {
+      "name": "outlook_list_folders",
+      "description": "List all mail folders in the Outlook account"
+    }
+  ]
+}
