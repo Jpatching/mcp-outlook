@@ -1,10 +1,6 @@
 startCommand:
   type: stdio
   config:
-    command: "python"
+    command: "uvx"
     args:
-      - "server.py"
-
-configSchema:
-  type: object
-  properties: {}
+      - "mcp-outlook-desktop"
