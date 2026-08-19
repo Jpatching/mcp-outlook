@@ -1,0 +1,8 @@
+runtime: python
+entrypoint: server.py
+startCommand:
+  type: stdio
+  config:
+    command: uvx
+    args:
+      - mcp-outlook

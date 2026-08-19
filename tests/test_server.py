@@ -69,3 +69,44 @@ async def test_outlook_list_calendar_events():
             res = await server.outlook_list_calendar_events(days_ahead=7)
             assert "Architecture Sync" in res
             assert "https://teams.microsoft.com/meet/123" in res
+
+@pytest.mark.asyncio
+async def test_outlook_search_messages():
+    mock_messages = [
+        {
+            "id": "MSG_SEARCH_1",
+            "subject": "Invoice #1024 Approved",
+            "from": "billing@example.com",
+            "received": "2026-08-19 11:00",
+            "isRead": True,
+            "preview": "Payment processed successfully."
+        }
+    ]
+    with patch.object(server.cloud_client, "search_messages", new_callable=AsyncMock) as mock_search:
+        mock_search.return_value = mock_messages
+        with patch("server.is_local_mode", return_value=False):
+            res = await server.outlook_search_messages(query="Invoice", top=5)
+            assert "Search results for 'Invoice' (1 messages):" in res
+            assert "Invoice #1024 Approved" in res
+
+@pytest.mark.asyncio
+async def test_outlook_list_folders():
+    mock_folders = [
+        {"displayName": "Inbox", "unreadItemCount": 3, "totalItemCount": 150, "id": "FLD_INBOX"},
+        {"displayName": "Archive", "unreadItemCount": 0, "totalItemCount": 1200, "id": "FLD_ARCHIVE"}
+    ]
+    with patch.object(server.cloud_client, "list_folders", new_callable=AsyncMock) as mock_folders_fn:
+        mock_folders_fn.return_value = mock_folders
+        with patch("server.is_local_mode", return_value=False):
+            res = await server.outlook_list_folders()
+            assert "Outlook Mail Folders:" in res
+            assert "Inbox: 3 unread / 150 total" in res
+            assert "Archive: 0 unread / 1200 total" in res
+
+@pytest.mark.asyncio
+async def test_outlook_get_message_error_handling():
+    with patch.object(server.cloud_client, "get_message", new_callable=AsyncMock) as mock_get:
+        mock_get.side_effect = RuntimeError("Message not found")
+        with patch("server.is_local_mode", return_value=False):
+            res = await server.outlook_get_message("INVALID_ID")
+            assert "Error retrieving message INVALID_ID: Message not found" in res
