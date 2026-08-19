@@ -18,10 +18,56 @@ A high-performance **Model Context Protocol (MCP)** server providing direct, sec
 
 ---
 
-## 🚀 Setup on Windows (`C:\projects\mcp-outlook`)
+## 🚀 Installation & Quickstart
 
-### 1. Clone into `C:\projects`
-Open Command Prompt or PowerShell on your Windows PC:
+### Method 1: Instant Run with `uvx` (No git clone needed)
+
+If you have `uv` installed, you can run the server directly:
+
+```cmd
+uvx mcp-outlook
+```
+
+#### Claude Desktop Configuration (`%APPDATA%\Claude\claude_desktop_config.json`):
+```json
+{
+  "mcpServers": {
+    "outlook": {
+      "command": "uvx",
+      "args": ["mcp-outlook"]
+    }
+  }
+}
+```
+
+#### Claude Code CLI:
+```cmd
+claude mcp add outlook uvx mcp-outlook
+```
+
+---
+
+### Method 2: Local Installation with `pip`
+
+```cmd
+pip install mcp-outlook
+```
+
+Then in your Claude Desktop config:
+```json
+{
+  "mcpServers": {
+    "outlook": {
+      "command": "mcp-outlook"
+    }
+  }
+}
+```
+
+---
+
+### Method 3: Clone from Source (`C:\projects\mcp-outlook`)
+
 ```cmd
 cd C:\projects
 gh repo clone Jpatching/mcp-outlook
@@ -29,44 +75,10 @@ cd mcp-outlook
 setup.bat
 ```
 
-### 2. Test Connection (with Outlook open)
+Test connection (with Outlook open):
 ```cmd
 run.bat --status
 run.bat --test
-```
-
----
-
-## ⚙️ Connecting to Claude & Antigravity on Windows
-
-### 1. Claude Desktop (Windows)
-Open `%APPDATA%\Claude\claude_desktop_config.json` and add:
-```json
-{
-  "mcpServers": {
-    "outlook": {
-      "command": "C:\\projects\\mcp-outlook\\run.bat"
-    }
-  }
-}
-```
-
-### 2. Claude Code CLI (Windows)
-```cmd
-claude mcp add outlook C:\projects\mcp-outlook\run.bat
-```
-
-### 3. Antigravity CLI (Windows)
-In `%USERPROFILE%\.gemini\config\mcp_config.json`:
-```json
-{
-  "mcpServers": {
-    "outlook": {
-      "command": "C:\\projects\\mcp-outlook\\run.bat",
-      "args": []
-    }
-  }
-}
 ```
 
 ---
