@@ -10,6 +10,31 @@ A high-performance **Model Context Protocol (MCP)** server providing direct, sec
 
 ---
 
+
+## 🖥️ Live Terminal Demo
+
+```ansi
+[1;36m>[0m [1mclaude[0m "Check my unread emails and prepare a draft follow-up to Alex about tomorrow's sync"
+
+[1;34m⚡ Calling Tool:[0m outlook_list_messages(folder="inbox", unread_only=True, top=5)
+[32m✔ Found 2 unread messages:[0m
+  [1] [1mFrom:[0m Alex Mercer <alex@company.com> | [1mSubject:[0m Agenda for Q3 Planning Sync
+  [2] [1mFrom:[0m Cloud Alerts <alerts@infra.io> | [1mSubject:[0m Weekly Node Health Report
+
+[1;34m⚡ Calling Tool:[0m outlook_get_message(message_id="MSG_049281")
+[32m✔ Retrieved message safely encapsulated in <untrusted_email_body_content> boundary.[0m
+
+[1;34m⚡ Calling Tool:[0m outlook_create_draft(
+    to_recipients=["alex@company.com"],
+    subject="Re: Agenda for Q3 Planning Sync",
+    body="Hi Alex,\n\nThanks for sending over the agenda. I reviewed the distributed queue items and added notes for tomorrow's sync.\n\nBest,\nJosh"
+)
+[1;32m✔ Draft created successfully in Outlook Drafts folder (ID: DRAFT_839120)[0m
+[2;37m  [Human-in-the-Loop Safe]: The draft is ready in your Outlook app for review before sending.[0m
+```
+
+---
+
 ## 🔒 Privacy & Security Architecture
 
 - **Human-in-the-Loop by Design**: All outbound message drafting defaults to your Outlook `Drafts` folder for manual review. Direct unreviewed sends (`outlook_send_mail`) require an explicit `confirm_send=True` flag to prevent accidental dispatches.
